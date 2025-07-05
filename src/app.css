@@ -1,107 +1,137 @@
-@import '@fontsource/fira-mono';
-
+/* Core variables */
 :root {
-	--font-body: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	--font-mono: 'Fira Mono', monospace;
-	--color-bg-0: rgb(202, 216, 228);
-	--color-bg-1: hsl(209, 36%, 86%);
-	--color-bg-2: hsl(224, 44%, 95%);
-	--color-theme-1: #ff3e00;
-	--color-theme-2: #4075a6;
-	--color-text: rgba(0, 0, 0, 0.7);
-	--column-width: 42rem;
-	--column-margin-top: 4rem;
-	font-family: var(--font-body);
-	color: var(--color-text);
-}
-
-body {
-	min-height: 100vh;
+	--dark-bg: #000000;
+	--text-color: #FFFFFF;
+	--text-color-secondary: rgba(255, 255, 255, 0.7);
+	--accent-color: #F76B0E;
+	--transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  /* Global reset */
+  *, *::before, *::after {
+	box-sizing: border-box;
 	margin: 0;
-	background-attachment: fixed;
-	background-color: var(--color-bg-1);
-	background-size: 100vw 100vh;
-	background-image: radial-gradient(
-			50% 50% at 50% 50%,
-			rgba(255, 255, 255, 0.75) 0%,
-			rgba(255, 255, 255, 0) 100%
-		),
-		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
-}
-
-h1,
-h2,
-p {
-	font-weight: 400;
-}
-
-p {
-	line-height: 1.5;
-}
-
-a {
-	color: var(--color-theme-1);
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-h1 {
-	font-size: 2rem;
-	text-align: center;
-}
-
-h2 {
-	font-size: 1rem;
-}
-
-pre {
-	font-size: 16px;
-	font-family: var(--font-mono);
-	background-color: rgba(255, 255, 255, 0.45);
-	border-radius: 3px;
-	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
-	padding: 0.5em;
-	overflow-x: auto;
-	color: var(--color-text);
-}
-
-.text-column {
-	display: flex;
-	max-width: 48rem;
-	flex: 0.6;
-	flex-direction: column;
-	justify-content: center;
-	margin: 0 auto;
-}
-
-input,
-button {
-	font-size: inherit;
-	font-family: inherit;
-}
-
-button:focus:not(:focus-visible) {
-	outline: none;
-}
-
-@media (min-width: 720px) {
-	h1 {
-		font-size: 2.4rem;
-	}
-}
-
-.visually-hidden {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: auto;
-	margin: 0;
-	overflow: hidden;
 	padding: 0;
-	position: absolute;
-	width: 1px;
-	white-space: nowrap;
-}
+  }
+  
+  /* Base styles */
+  body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: var(--dark-bg);
+	color: var(--text-color);
+	line-height: 1.6;
+	font-size: 16px;
+	overflow-x: hidden;
+  }
+  
+  /* Hide default cursor when custom cursor is active */
+  html, body, a, button, .btn, .collage-image {
+	cursor: none;
+  }
+  
+  /* Container width */
+  .container {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 2rem;
+  }
+  
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+	font-weight: 400;
+	line-height: 1.2;
+  }
+  
+  a {
+	color: var(--text-color);
+	text-decoration: none;
+	transition: var(--transition);
+  }
+  
+  /* Button styles */
+  .btn {
+	display: inline-block;
+	background-color: transparent;
+	border: 1px solid var(--text-color);
+	color: var(--text-color);
+	padding: 0.75rem 2rem;
+	font-size: 0.9rem;
+	text-transform: lowercase;
+	letter-spacing: 0.05em;
+	transition: var(--transition);
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+	border-radius: 0;
+  }
+  
+  .btn:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Spacing utilities */
+  .py-lg {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+  }
+  
+  .py-md {
+	padding-top: 2.5rem;
+	padding-bottom: 2.5rem;
+  }
+  
+  .mt-lg {
+	margin-top: 5rem;
+  }
+  
+  .mb-lg {
+	margin-bottom: 5rem;
+  }
+  
+  .mt-md {
+	margin-top: 2.5rem;
+  }
+  
+  .mb-md {
+	margin-bottom: 2.5rem;
+  }
+  
+  /* Image utilities */
+  .grayscale {
+	filter: grayscale(100%);
+	transition: filter 0.3s ease;
+  }
+  
+  .grayscale:hover {
+	filter: grayscale(0%);
+  }
+  
+  /* Responsive utilities */
+  @media (max-width: 1024px) {
+	.container {
+	  padding: 0 1.5rem;
+	}
+  }
+  
+  @media (max-width: 768px) {
+	body {
+	  font-size: 14px;
+	}
+	
+	.py-lg {
+	  padding-top: 3rem;
+	  padding-bottom: 3rem;
+	}
+	
+	.py-md {
+	  padding-top: 1.5rem;
+	  padding-bottom: 1.5rem;
+	}
+  }
+  
+  @media (max-width: 480px) {
+	.container {
+	  padding: 0 1rem;
+	}
+  }
